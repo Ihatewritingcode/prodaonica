@@ -1,25 +1,25 @@
-/* ==================================================
+/* ===================================================
    MERKATO d.o.o. — Mješovita Roba
    style.css  |  Mobile-first RWD
-   ================================================== */
+   =================================================== */
 
 /* --- Google Fonts import --- */
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Source+Sans+3:wght@300;400;600;700&display=swap');
 
 /* --- CSS Custom Properties --- */
 :root {
-  --clr-bg:       #F6F1E9;
+  --clr-bg:       #F4F7FB;
   --clr-bg-alt:   #FFFFFF;
-  --clr-header:   #1C1C1C;
-  --clr-nav:      #2B2B2B;
-  --clr-primary:  #C0392B;   /* terracotta-red */
-  --clr-accent:   #E67E22;   /* warm amber */
-  --clr-gold:     #F0C040;
-  --clr-text:     #1A1A1A;
-  --clr-muted:    #6B6B6B;
-  --clr-border:   #DDD3C0;
-  --clr-footer:   #1C1C1C;
-  --clr-footer-t: #B0A090;
+  --clr-header:   #0D2145;
+  --clr-nav:      #122860;
+  --clr-primary:  #1A4DB5;   /* royal blue */
+  --clr-accent:   #F5C200;   /* golden yellow */
+  --clr-gold:     #FFD740;
+  --clr-text:     #0F1A2E;
+  --clr-muted:    #5A6B85;
+  --clr-border:   #C8D6EA;
+  --clr-footer:   #0D2145;
+  --clr-footer-t: #8EA8CC;
 
   --ff-display: 'Playfair Display', Georgia, serif;
   --ff-body:    'Source Sans 3', 'Segoe UI', sans-serif;
@@ -81,9 +81,9 @@ ul  { list-style: none; }
   color: #fff;
 }
 .btn-primary:hover {
-  background: #A93226;
+  background: #1240A0;
   transform: translateY(-2px);
-  box-shadow: 0 6px 18px rgba(192,57,43,.35);
+  box-shadow: 0 6px 18px rgba(26,77,181,.35);
 }
 .btn-outline {
   background: transparent;
@@ -238,7 +238,7 @@ ul  { list-style: none; }
 .nav-list a.active {
   color: var(--clr-gold);
   border-left-color: var(--clr-primary);
-  background: rgba(192,57,43,.15);
+  background: rgba(26,77,181,.15);
 }
 
 /* ===================================================
@@ -247,7 +247,7 @@ ul  { list-style: none; }
 .hero {
   position: relative;
   overflow: hidden;
-  background: linear-gradient(145deg, #1C1C1C 0%, #2C1810 55%, #1C1C1C 100%);
+  background: linear-gradient(145deg, #0D2145 0%, #0A3878 55%, #0D2145 100%);
   padding: 4rem 0 3.5rem;
   color: #fff;
 }
@@ -318,15 +318,15 @@ ul  { list-style: none; }
   justify-content: center;
   text-align: center;
   color: #fff;
-  box-shadow: 0 8px 30px rgba(192,57,43,.5);
+  box-shadow: 0 8px 30px rgba(26,77,181,.5);
   animation: pulse 2.5s infinite;
 }
 .hero__badge strong { font-size: 1.9rem; font-family: var(--ff-display); line-height: 1; }
 .hero__badge span   { font-size: .7rem; letter-spacing: .1em; text-transform: uppercase; }
 
 @keyframes pulse {
-  0%, 100% { box-shadow: 0 8px 30px rgba(192,57,43,.5); }
-  50%       { box-shadow: 0 8px 46px rgba(192,57,43,.75); }
+  0%, 100% { box-shadow: 0 8px 30px rgba(26,77,181,.5); }
+  50%       { box-shadow: 0 8px 46px rgba(26,77,181,.75); }
 }
 
 /* ===================================================
@@ -376,7 +376,7 @@ ul  { list-style: none; }
    PROMO BANNER  (index)
    =================================================== */
 .promo-banner {
-  background: linear-gradient(135deg, var(--clr-primary) 0%, #A03028 100%);
+  background: linear-gradient(135deg, var(--clr-primary) 0%, #0F3490 100%);
   color: #fff;
   padding: 2.75rem 0;
   text-align: center;
@@ -399,8 +399,8 @@ ul  { list-style: none; }
   font-weight: 700;
 }
 .promo-banner .btn:hover {
-  background: var(--clr-gold);
-  border-color: var(--clr-gold);
+  background: var(--clr-accent);
+  border-color: var(--clr-accent);
   color: var(--clr-text);
   transform: translateY(-2px);
 }
@@ -511,7 +511,7 @@ ul  { list-style: none; }
   box-shadow: var(--shadow);
 }
 .product-card__img-wrap {
-  background: linear-gradient(135deg, #EDE0CF, #D4C9B5);
+  background: linear-gradient(135deg, #D8E6F5, #C0D4EE);
   height: 110px;
   display: flex;
   align-items: center;
@@ -746,7 +746,7 @@ ul  { list-style: none; }
 .form-group textarea:focus,
 .form-group select:focus {
   border-color: var(--clr-primary);
-  box-shadow: 0 0 0 3px rgba(192,57,43,.15);
+  box-shadow: 0 0 0 3px rgba(26,77,181,.15);
 }
 .form-group textarea { resize: vertical; min-height: 130px; }
 
@@ -754,7 +754,7 @@ ul  { list-style: none; }
    MAP PLACEHOLDER
    =================================================== */
 .map-wrap {
-  background: linear-gradient(135deg, #EDE0CF 0%, #D4C9B5 100%);
+  background: linear-gradient(135deg, #D8E6F5 0%, #D4C9B5 100%);
   border: 1px solid var(--clr-border);
   border-radius: 12px;
   height: 220px;
@@ -883,7 +883,7 @@ ul  { list-style: none; }
   }
   .nav-list a.active {
     color: var(--clr-gold);
-    background: rgba(192,57,43,.2);
+    background: rgba(26,77,181,.2);
     border-left: none;
     border-bottom-color: var(--clr-gold);
   }
