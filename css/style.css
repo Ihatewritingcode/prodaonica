@@ -1,7 +1,7 @@
-/* ===========================================================
+/* =========================================================
    MERKATO d.o.o. — Night Market Editorial Redesign
    style.css  |  Mobile-first  |  Dark warm palette
-   =========================================================== */
+   ========================================================= */
 
 @import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Albert+Sans:wght@300;400;500;600;700&family=Fira+Code:wght@400;500;600&display=swap');
 
@@ -680,9 +680,9 @@ tfoot td a { color: var(--gold); }
 }
 .legend-box strong { color: var(--text-sub); }
 
-/* ============================================================
+/* ===========================================================
    KONTAKT
-   ============================================================ */
+   =========================================================== */
 .contact-section { padding: 3rem 0 4.5rem; }
 .contact-grid { display: grid; grid-template-columns: 1fr; gap: 3rem; }
 
