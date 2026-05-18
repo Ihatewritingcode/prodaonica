@@ -1356,7 +1356,7 @@ tfoot td a { color: var(--blue); font-weight: 700; }
   }
   .nav-list a::before { display: none; }
   .nav-list a.active {
-    background: rgba(200,16,46,.25);
+    background: rgba(255,255,122,.25);
     color: #fff;
   }
   .nav-list a::after {
