@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="MERKATO d.o.o. – Katalog proizvoda. Prelistajte naš detaljni asortiman po kategorijama i pronađite sve što trebate.">
+  <title>Katalog | MERKATO d.o.o.</title>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+  <!-- ======= HEADER ======= -->
+  <header class="site-header" id="siteHeader">
+    <div class="container header-inner">
+
+      <a href="../index.html" class="brand">
+        <img src="../images/logo.png" alt="MERKATO logo" class="brand__logo">
+        <span class="brand__name">
+          MERKATO
+          <small>Mješovita roba d.o.o.</small>
+        </span>
+      </a>
+
+      <button class="nav-toggle" id="navToggle" aria-label="Otvori navigaciju" aria-expanded="false" aria-controls="mainNav">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" id="mainNav" role="navigation" aria-label="Glavna navigacija">
+        <ul class="nav-list">
+          <li><a href="../index.html">Početna</a></li>
+          <li><a href="cijenik.html">Cijenik</a></li>
+          <li><a href="katalog.html" class="active" aria-current="page">Katalog</a></li>
+          <li><a href="kontakt.html">Kontakt</a></li>
+        </ul>
+      </nav>
+
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ======= PAGE BANNER ======= -->
+    <div class="page-banner">
+      <div class="page-banner__ghost" aria-hidden="true">Katalog</div>
+      <div class="container">
+        <h1 class="page-banner__title">Katalog proizvoda</h1>
+        <nav class="breadcrumb" aria-label="Breadcrumb">
+          <a href="../index.html">Početna</a>
+          <span aria-hidden="true">›</span>
+          <span>Katalog</span>
+        </nav>
+      </div>
+    </div>
+
+    <!-- ======= KATALOG ======= -->
+    <section class="katalog-section" aria-label="Katalog proizvoda">
+      <div class="container">
+
+        <!-- Filter bar -->
+        <div class="filter-bar" role="group" aria-label="Filtriranje po kategoriji">
+          <button class="filter-btn active" data-cat="all">Sve kategorije</button>
+          <button class="filter-btn" data-cat="prehrana">🥖 Prehrana</button>
+          <button class="filter-btn" data-cat="pica">🥤 Pića</button>
+          <button class="filter-btn" data-cat="higijena">🧴 Higijena</button>
+          <button class="filter-btn" data-cat="dom">🏠 Dom</button>
+          <button class="filter-btn" data-cat="vrt">🌿 Vrt</button>
+          <button class="filter-btn" data-cat="ljubimci">🐾 Kućni ljubimci</button>
+        </div>
+
+        <!-- 1. Prehrana -->
+        <div class="kat-section" data-section="prehrana">
+          <div class="kat-section__header">
+            <span class="kat-section__icon">🥖</span>
+            <h2 class="kat-section__title">Prehrambeni artikli</h2>
+            <span class="kat-section__count">16 artikala</span>
+          </div>
+          <ul class="kat-grid" role="list">
+            <li class="kat-item">
+              <div class="kat-item__thumb">🍞</div>
+              <div class="kat-item__body">
+                <p class="kat-item__name">Kruh i pecivo</p>
+                <p class="kat-item__desc">Bijeli, crni, graham, lepinje, pereci</p>
+                <div class="kat-item__footer">
+                  <span class="kat-tag tag-svjeze">Svježe</span>
+                  <span class="kat-item__badge">od 0,90 €</span>
+                </div>
+              </div>
+            </li>
+            <li class="kat-item">
+              <div class="kat-item__thumb">🧀</div>
+              <div class="kat-item__body">
+                <p class="kat-item__name">Mliječni proizvodi</p>
+                <p class="kat-item__desc">Mlijeko, sir, jogurt, maslac, pavlaka</p>
+                <div class="kat-item__footer">
+                  <span class="kat-tag tag-popular">Popularno</span>
+                  <span class="kat-item__badge">od 1,20 €</span>
+                </div>
+              </div>
+            </li>
+            <li class="kat-item">
+              <div class="kat-item__thumb">🥩</div>
+              <div class="kat-item__body">
+                <p class="kat-item__name">Mesni prerađevini</p>
+                <p class="kat-item__desc">Kobasice, salame, šunka, hrenovke</p>
+                <div class="kat-item__footer">
+                  <span class="kat-item__badge">od 2,50 €</span>
+                </div>
+              </div>
+            </li>
+            <li class="kat-item">
+              <div class="kat-item__thumb">🥚</div>
+              <div class="kat-item__body">
+                <p class="kat-item__name">Jaja</p>
+                <p class="kat-item__desc">Svježa jaja, razredi M, L, XL</p>
+                <div class="kat-item__footer">
+                  <span class="kat-tag tag-akcija">Akcija</span>
+                  <span class="kat-item__badge">od 0,18 €/kom</span>
+                </div>
+              </div>
+            </li>
+            <li class="kat-item">
+              <div class="kat-item__thumb">🫙</div>
+              <div class="kat-item__body">
+                <p class="kat-item__name">Konzerve i zimnica</p>
+                <p class="kat-item__desc">Povrće, voće, džemovi, paštete</p>
+                <div class="kat-item__footer">
+                  <span class="kat-item__badge">od 0,75 €</span>
+                </div>
+              </div>
+            </li>
+            <li class="kat-item">
+              <div class="kat-item__thumb">🌾</div>
+              <div class="kat-item__body">
+                <p class="kat-item__name">Žitarice i tjestenina</p>
+                <p class="kat-item__desc">Riža, tjestenina, kaša, zobene pahuljice</p>
+                <div class="kat-item__footer">
+                  <span class="kat-item__badge">od 0,60 €</span>
+                </div>
+              </div>
+            </li>
+            <li class="kat-item">
+              <div class="kat-item__thumb">🛢️</div>
+              <div class="kat-item__body">
+                <p class="kat-item__name">Ulja i začini</p>
+                <p class="kat-item__desc">Maslinovo, suncokretovo, ocat, mirodije</p>
+                <div class="kat-item__footer">
+                  <span class="kat-tag tag-novo">Novo</span>
+                  <span class="kat-item__badge">od 1,40 €</span>
+                </div>
+              </div>
+            </li>
+            <li class="kat-item">
+              <div class="kat-item__thumb">🍬</div>
+              <div class="kat-item__body">
+                <p class="kat-item__name">Slatkiši i grickalice</p>
+                <p class="kat-item__desc">Čokolada, bomboni, čips, keksi</p>
+                <div class="kat-item__footer">
+                  <span class="kat-tag tag-popular">Popularno</span>
+                  <span class="kat-item__badge">od 0,50 €</span>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <!-- 2. Pića -->
+        <div class="kat-section" data-section="pica">
+          <div class="kat-section__header">
+            <span class="kat-section__icon">🥤</span>
+            <h2 class="kat-section__title">Pića</h2>
+            <span class="kat-section__count">8 artikala</span>
+          </div>
+          <ul class="kat-grid" role="list">
+            <li class="kat-item">
+              <div class="kat-item__thumb">💧</div>
+              <div class="kat-item__body">
+                <p class="kat-item__name">Mineralna voda</p>
+                <p class="kat-item__desc">Gazirana i negazirana, 0,5 l – 5 l</p>
+                <div class="kat-item__footer">
+                  <span class="kat-item__badge">od 0,30 €</span>
+                </div>
+              </div>
+            </li>
+            <li class="kat-item">
+              <div class="kat-item__thumb">🧃</div>
+              <div class="kat-item__body">
+                <p class="kat-item__name">Sokovi</p>
+                <p class="kat-item__desc">Voćni sokovi, nektari, ledeni čajevi</p>
+                <div class="kat-item__footer">
+                  <span class="kat-tag tag-akcija">Akcija</span>
+                  <span class="kat-item__badge">od 0,65 €</span>
+                </div>
+              </div>
+            </li>
+            <li class="kat-item">
+              <div class="kat-item__thumb">☕</div>
+              <div class="kat-item__body">
+                <p class="kat-item__name">Kava i čaj</p>
+                <p class="kat-item__desc">Mljevena kava, instant, biljni čajevi</p>
+                <div class="kat-item__footer">
+                  <span class="kat-item__badge">od 1,80 €</span>
+                </div>
+              </div>
+            </li>
+            <li class="kat-item">
+              <div class="kat-item__thumb">🍺</div>
+              <div class="kat-item__body">
+                <p class="kat-item__name">Pivo i vino</p>
+                <p class="kat-item__desc">Domaća i uvozna piva, stolna vina</p>
+                <div class="kat-item__footer">
+                  <span class="kat-item__badge">od 0,80 €</span>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <!-- 3. Higijena -->
+        <div class="kat-section" data-section="higijena">
+          <div class="kat-section__header">
+            <span class="kat-section__icon">🧴</span>
+            <h2 class="kat-section__title">Higijena &amp; kozmetika</h2>
+            <span class="kat-section__count">12 artikala</span>
+          </div>
+          <ul class="kat-grid" role="list">
+            <li class="kat-item">
+              <div class="kat-item__thumb">🧼</div>
+              <div class="kat-item__body">
+                <p class="kat-item__name">Sapuni i gelovi za tuširanje</p>
+                <p class="kat-item__desc">Za sve tipove kože, razne mirise</p>
+                <div class="kat-item__footer">
+                  <span class="kat-item__badge">od 0,99 €</span>
+                </div>
+              </div>
+            </li>
+            <li class="kat-item">
+              <div class="kat-item__thumb">🪥</div>
+              <div class="kat-item__body">
+                <p class="kat-item__name">Zubna higijena</p>
+                <p class="kat-item__desc">Četkice, paste, vodice za ispiranje</p>
+                <div class="kat-item__footer">
+                  <span class="kat-tag tag-akcija">Akcija</span>
+                  <span class="kat-item__badge">od 1,20 €</span>
+                </div>
+              </div>
+            </li>
+            <li class="kat-item">
+              <div class="kat-item__thumb">💇</div>
+              <div class="kat-item__body">
+                <p class="kat-item__name">Šamponi i regeneratori</p>
+                <p class="kat-item__desc">Za suhu, masnu i normalnu kosu</p>
+                <div class="kat-item__footer">
+                  <span class="kat-item__badge">od 2,50 €</span>
+                </div>
+              </div>
+            </li>
+            <li class="kat-item">
+              <div class="kat-item__thumb">🧻</div>
+              <div class="kat-item__body">
+                <p class="kat-item__name">Papirna galanterija</p>
+                <p class="kat-item__desc">Toaletni papir, ubrusi, kuhinjske role</p>
+                <div class="kat-item__footer">
+                  <span class="kat-tag tag-popular">Popularno</span>
+                  <span class="kat-item__badge">od 1,10 €</span>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <!-- 4. Dom -->
+        <div class="kat-section" data-section="dom">
+          <div class="kat-section__header">
+            <span class="kat-section__icon">🏠</span>
+            <h2 class="kat-section__title">Dom &amp; kućanstvo</h2>
+            <span class="kat-section__count">10 artikala</span>
+          </div>
+          <ul class="kat-grid" role="list">
+            <li class="kat-item">
+              <div class="kat-item__thumb">🫧</div>
+              <div class="kat-item__body">
+                <p class="kat-item__name">Sredstva za čišćenje</p>
+                <p class="kat-item__desc">Podovi, kupaonice, kuhinja, staklo</p>
+                <div class="kat-item__footer">
+                  <span class="kat-item__badge">od 1,30 €</span>
+                </div>
+              </div>
+            </li>
+            <li class="kat-item">
+              <div class="kat-item__thumb">👕</div>
+              <div class="kat-item__body">
+                <p class="kat-item__name">Pranje rublja</p>
+                <p class="kat-item__desc">Deterdženti u prahu i tekući, omekšivači</p>
+                <div class="kat-item__footer">
+                  <span class="kat-tag tag-akcija">Akcija</span>
+                  <span class="kat-item__badge">od 3,50 €</span>
+                </div>
+              </div>
+            </li>
+            <li class="kat-item">
+              <div class="kat-item__thumb">🔦</div>
+              <div class="kat-item__body">
+                <p class="kat-item__name">Alat i potrepštine</p>
+                <p class="kat-item__desc">Baterije, žarulje, ljepila, vrpce</p>
+                <div class="kat-item__footer">
+                  <span class="kat-item__badge">od 0,70 €</span>
+                </div>
+              </div>
+            </li>
+            <li class="kat-item">
+              <div class="kat-item__thumb">🕯️</div>
+              <div class="kat-item__body">
+                <p class="kat-item__name">Dekoracija doma</p>
+                <p class="kat-item__desc">Svijeće, okviri, jastuci, stolnjaci</p>
+                <div class="kat-item__footer">
+                  <span class="kat-tag tag-novo">Novo</span>
+                  <span class="kat-item__badge">od 1,90 €</span>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <!-- 5. Vrt -->
+        <div class="kat-section" data-section="vrt">
+          <div class="kat-section__header">
+            <span class="kat-section__icon">🌿</span>
+            <h2 class="kat-section__title">Vrt &amp; dvorište</h2>
+            <span class="kat-section__count">6 artikala</span>
+          </div>
+          <ul class="kat-grid" role="list">
+            <li class="kat-item">
+              <div class="kat-item__thumb">🌱</div>
+              <div class="kat-item__body">
+                <p class="kat-item__name">Zemlja i gnojiva</p>
+                <p class="kat-item__desc">Supstrat za cvijeće, povrtnjak, gnojiva</p>
+                <div class="kat-item__footer">
+                  <span class="kat-item__badge">od 2,20 €</span>
+                </div>
+              </div>
+            </li>
+            <li class="kat-item">
+              <div class="kat-item__thumb">🪴</div>
+              <div class="kat-item__body">
+                <p class="kat-item__name">Lončanice i sadnice</p>
+                <p class="kat-item__desc">Cvijeće, začinsko bilje, sezonske sadnice</p>
+                <div class="kat-item__footer">
+                  <span class="kat-tag tag-svjeze">Svježe</span>
+                  <span class="kat-item__badge">od 1,50 €</span>
+                </div>
+              </div>
+            </li>
+            <li class="kat-item">
+              <div class="kat-item__thumb">🛠️</div>
+              <div class="kat-item__body">
+                <p class="kat-item__name">Vrtni alat</p>
+                <p class="kat-item__desc">Lopate, grablje, škare za grane</p>
+                <div class="kat-item__footer">
+                  <span class="kat-item__badge">od 4,90 €</span>
+                </div>
+              </div>
+            </li>
+            <li class="kat-item">
+              <div class="kat-item__thumb">💦</div>
+              <div class="kat-item__body">
+                <p class="kat-item__name">Zalivanje</p>
+                <p class="kat-item__desc">Crijeva, raspršivači, kantice za vodu</p>
+                <div class="kat-item__footer">
+                  <span class="kat-item__badge">od 3,20 €</span>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <!-- 6. Kućni ljubimci -->
+        <div class="kat-section" data-section="ljubimci">
+          <div class="kat-section__header">
+            <span class="kat-section__icon">🐾</span>
+            <h2 class="kat-section__title">Kućni ljubimci</h2>
+            <span class="kat-section__count">5 artikala</span>
+          </div>
+          <ul class="kat-grid" role="list">
+            <li class="kat-item">
+              <div class="kat-item__thumb">🐶</div>
+              <div class="kat-item__body">
+                <p class="kat-item__name">Hrana za pse</p>
+                <p class="kat-item__desc">Suha hrana, konzerve, poslastice</p>
+                <div class="kat-item__footer">
+                  <span class="kat-tag tag-popular">Popularno</span>
+                  <span class="kat-item__badge">od 1,80 €</span>
+                </div>
+              </div>
+            </li>
+            <li class="kat-item">
+              <div class="kat-item__thumb">🐱</div>
+              <div class="kat-item__body">
+                <p class="kat-item__name">Hrana za mačke</p>
+                <p class="kat-item__desc">Pauchet, suha hrana, grickalice</p>
+                <div class="kat-item__footer">
+                  <span class="kat-item__badge">od 0,80 €</span>
+                </div>
+              </div>
+            </li>
+            <li class="kat-item">
+              <div class="kat-item__thumb">🐦</div>
+              <div class="kat-item__body">
+                <p class="kat-item__name">Hrana za ptice i glodare</p>
+                <p class="kat-item__desc">Sjemenke, mješavine, vitamini</p>
+                <div class="kat-item__footer">
+                  <span class="kat-item__badge">od 1,20 €</span>
+                </div>
+              </div>
+            </li>
+            <li class="kat-item">
+              <div class="kat-item__thumb">🧹</div>
+              <div class="kat-item__body">
+                <p class="kat-item__name">Njega i higijena</p>
+                <p class="kat-item__desc">Šampon, četke, posude, toaletni pijesak</p>
+                <div class="kat-item__footer">
+                  <span class="kat-tag tag-novo">Novo</span>
+                  <span class="kat-item__badge">od 2,40 €</span>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <!-- CTA box -->
+        <div class="catalog-cta">
+          <h2>Ne vidite što tražite?</h2>
+          <p>Nabavljamo artikle po narudžbi. Kontaktirajte nas s vašim upitom i javit ćemo se u roku 24 sata.</p>
+          <a href="kontakt.html" class="btn btn-primary">Pošalji upit &rarr;</a>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ======= FOOTER ======= -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="container">
+      <div class="footer-grid">
+
+        <div class="footer-brand">
+          <a href="../index.html" class="brand" style="display:inline-flex;margin-bottom:.85rem;">
+            <img src="../images/logo.png" alt="MERKATO logo" class="brand__logo" style="filter:brightness(1.3)">
+            <span class="brand__name">
+              MERKATO
+              <small>Mješovita roba d.o.o.</small>
+            </span>
+          </a>
+          <p>Vaš pouzdani partner za svakodnevnu opskrbu od 2003. godine.</p>
+        </div>
+
+        <div class="footer-col">
+          <h4>Navigacija</h4>
+          <ul>
+            <li><a href="../index.html">Početna</a></li>
+            <li><a href="cijenik.html">Cijenik</a></li>
+            <li><a href="katalog.html">Katalog</a></li>
+            <li><a href="kontakt.html">Kontakt</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Kontakt</h4>
+          <ul>
+            <li>📍 Trg slobode 12, Zagreb</li>
+            <li>📞 <a href="tel:+38512345678">01 234 5678</a></li>
+            <li>✉ <a href="mailto:info@merkato.hr">info@merkato.hr</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Radno vrijeme</h4>
+          <ul>
+            <li>Pon–Pet: 7:00–20:00</li>
+            <li>Subota: 8:00–16:00</li>
+            <li>Nedjelja: zatvoreno</li>
+          </ul>
+        </div>
+
+      </div>
+
+      <div class="footer-bottom">
+        <span>&copy; 2025 MERKATO d.o.o. Sva prava pridržana.</span>
+        <span>OIB: 12345678901 | Zagreb, Hrvatska</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Hamburger
+    const toggle = document.getElementById('navToggle');
+    const nav    = document.getElementById('mainNav');
+    toggle.addEventListener('click', () => {
+      const open = toggle.getAttribute('aria-expanded') === 'true';
+      toggle.setAttribute('aria-expanded', String(!open));
+      nav.classList.toggle('is-open');
+    });
+    window.addEventListener('resize', () => {
+      if (window.innerWidth >= 768) {
+        toggle.setAttribute('aria-expanded', 'false');
+        nav.classList.remove('is-open');
+      }
+    });
+
+    // Scroll shadow
+    const header = document.getElementById('siteHeader');
+    window.addEventListener('scroll', () => {
+      header.classList.toggle('scrolled', window.scrollY > 40);
+    }, { passive: true });
+
+    // Category filter
+    const filterBtns  = document.querySelectorAll('.filter-btn');
+    const katSections = document.querySelectorAll('.kat-section');
+
+    filterBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        filterBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const cat = btn.dataset.cat;
+        katSections.forEach(sec => {
+          sec.style.display = (cat === 'all' || sec.dataset.section === cat) ? '' : 'none';
+        });
+      });
+    });
+  </script>
+
+</body>
+</html>
