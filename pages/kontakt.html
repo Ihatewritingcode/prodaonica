@@ -1,0 +1,692 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="MERKATO d.o.o. – Kontaktirajte nas. Adresa, telefon, e-mail i radno vrijeme. Pošaljite nam upit putem obrasca.">
+  <title>Kontakt | MERKATO d.o.o.</title>
+  <link rel="stylesheet" href="../css/style.css">
+
+  <style>
+    /* ── Page-specific additions ── */
+
+    /* Success toast */
+    .toast {
+      position: fixed;
+      bottom: 1.5rem;
+      right: 1.5rem;
+      background: var(--blue-dark);
+      color: #fff;
+      padding: 1rem 1.4rem;
+      border-radius: var(--radius);
+      border-left: 4px solid var(--yellow);
+      font-size: .9rem;
+      font-family: var(--font-body);
+      box-shadow: var(--shadow-md);
+      display: flex;
+      align-items: center;
+      gap: .7rem;
+      z-index: 999;
+      opacity: 0;
+      transform: translateY(16px);
+      pointer-events: none;
+      transition: opacity .3s, transform .3s;
+      max-width: 320px;
+    }
+    .toast.show {
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: auto;
+    }
+    .toast__icon { font-size: 1.2rem; flex-shrink: 0; }
+
+    /* Quick-links bar */
+    .quick-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .65rem;
+      margin-bottom: 2.25rem;
+    }
+    .quick-link {
+      display: inline-flex;
+      align-items: center;
+      gap: .45rem;
+      padding: .55rem 1.1rem;
+      background: var(--surface);
+      border: 1.5px solid var(--border);
+      border-radius: 99px;
+      font-size: .8rem;
+      font-weight: 600;
+      color: var(--text-sub);
+      text-decoration: none;
+      transition: border-color .2s, color .2s, background .2s, transform .2s;
+    }
+    .quick-link:hover {
+      border-color: var(--blue);
+      color: var(--blue);
+      background: var(--blue-pale);
+      transform: translateY(-2px);
+    }
+
+    /* Highlight card */
+    .highlight-card {
+      background: var(--yellow);
+      border-radius: var(--radius);
+      padding: 1.5rem 1.4rem;
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      margin-bottom: 1.75rem;
+    }
+    .highlight-card__icon { font-size: 1.75rem; line-height: 1; flex-shrink: 0; }
+    .highlight-card__body { }
+    .highlight-card__title {
+      font-weight: 700;
+      font-size: .95rem;
+      color: var(--blue-dark);
+      margin-bottom: .25rem;
+    }
+    .highlight-card__text {
+      font-size: .85rem;
+      color: rgba(13,34,100,.72);
+      line-height: 1.6;
+    }
+
+    /* Section divider label */
+    .divider-label {
+      display: flex;
+      align-items: center;
+      gap: .75rem;
+      margin: 2rem 0 1.25rem;
+    }
+    .divider-label::before,
+    .divider-label::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+    .divider-label span {
+      font-size: .68rem;
+      font-weight: 700;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      white-space: nowrap;
+    }
+
+    /* Hours today indicator */
+    .live-dot {
+      display: inline-block;
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #22C55E;
+      animation: pulse-dot 1.8s infinite;
+      margin-right: .4rem;
+      vertical-align: middle;
+    }
+    .live-dot.closed { background: #EF4444; animation: none; }
+
+    /* Radio-style subject selector */
+    .subject-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .45rem;
+      margin-top: .45rem;
+    }
+    .subject-chip input[type="radio"] { position: absolute; opacity: 0; pointer-events: none; }
+    .subject-chip label {
+      display: inline-block;
+      padding: .38rem .9rem;
+      border: 1.5px solid var(--border);
+      border-radius: 20px;
+      font-size: .78rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      cursor: pointer;
+      transition: all .18s;
+      letter-spacing: .03em;
+    }
+    .subject-chip input:checked + label {
+      background: var(--blue);
+      border-color: var(--blue);
+      color: #fff;
+    }
+    .subject-chip label:hover {
+      border-color: var(--blue);
+      color: var(--blue);
+      background: var(--blue-pale);
+    }
+
+    /* Character counter */
+    .char-counter {
+      text-align: right;
+      font-family: var(--font-mono);
+      font-size: .7rem;
+      color: var(--text-muted);
+      margin-top: .3rem;
+    }
+
+    /* Social row */
+    .social-row {
+      display: flex;
+      gap: .6rem;
+      margin-top: 1.25rem;
+    }
+    .social-btn {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      border: 1.5px solid var(--border);
+      background: var(--surface);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: border-color .2s, background .2s, transform .2s;
+      text-decoration: none;
+    }
+    .social-btn:hover {
+      border-color: var(--yellow);
+      background: var(--yellow-pale);
+      transform: translateY(-2px);
+    }
+
+    /* Form submit row */
+    .form-submit-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-top: 1.5rem;
+      padding-top: 1.25rem;
+      border-top: 1px solid var(--border);
+    }
+    .form-note {
+      font-size: .78rem;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      gap: .35rem;
+    }
+
+    /* Responsive */
+    @media (min-width: 768px) {
+      .info-columns {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1.25rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ======= HEADER ======= -->
+  <header class="site-header" id="siteHeader">
+    <div class="container header-inner">
+
+      <a href="../index.html" class="brand">
+        <img src="../images/logo.png" alt="MERKATO logo" class="brand__logo">
+        <span class="brand__name">
+          MERKATO
+          <small>Mješovita roba d.o.o.</small>
+        </span>
+      </a>
+
+      <button class="nav-toggle" id="navToggle" aria-label="Otvori navigaciju" aria-expanded="false" aria-controls="mainNav">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" id="mainNav" role="navigation" aria-label="Glavna navigacija">
+        <ul class="nav-list">
+          <li><a href="../index.html">Početna</a></li>
+          <li><a href="cijenik.html">Cijenik</a></li>
+          <li><a href="katalog.html">Katalog</a></li>
+          <li><a href="kontakt.html" class="active" aria-current="page">Kontakt</a></li>
+        </ul>
+      </nav>
+
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ======= PAGE BANNER ======= -->
+    <div class="page-banner">
+      <div class="page-banner__ghost" aria-hidden="true">Kontakt</div>
+      <div class="container">
+        <h1 class="page-banner__title">Kontaktirajte nas</h1>
+        <nav class="breadcrumb" aria-label="Breadcrumb">
+          <a href="../index.html">Početna</a>
+          <span aria-hidden="true">›</span>
+          <span>Kontakt</span>
+        </nav>
+      </div>
+    </div>
+
+    <!-- ======= QUICK LINKS ======= -->
+    <div style="background:var(--surface);border-bottom:1px solid var(--border);padding:.9rem 0;">
+      <div class="container">
+        <div class="quick-links">
+          <a href="tel:+38512345678" class="quick-link">📞 Pozovite nas</a>
+          <a href="mailto:info@merkato.hr" class="quick-link">✉️ Pošaljite e-mail</a>
+          <a href="https://maps.google.com/?q=Trg+slobode+12+Zagreb" target="_blank" rel="noopener" class="quick-link">📍 Prikaži na karti</a>
+          <a href="cijenik.html" class="quick-link">🏷️ Cijenik</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- ======= MAIN CONTACT SECTION ======= -->
+    <section class="contact-section">
+      <div class="container">
+        <div class="contact-grid">
+
+          <!-- ── LEFT: Info ─────────────────────────────── -->
+          <div class="contact-info">
+
+            <!-- Open/Closed today highlight -->
+            <div class="highlight-card" id="statusCard">
+              <span class="highlight-card__icon" id="statusIcon">🕐</span>
+              <div class="highlight-card__body">
+                <p class="highlight-card__title" id="statusTitle">Provjera radnog vremena…</p>
+                <p class="highlight-card__text" id="statusText"></p>
+              </div>
+            </div>
+
+            <!-- Contact details -->
+            <dl>
+              <div class="info-item">
+                <div class="info-item__icon" aria-hidden="true">📍</div>
+                <div class="info-item__body">
+                  <dt>Adresa</dt>
+                  <dd>Trg slobode 12, 10 000 Zagreb, Hrvatska</dd>
+                </div>
+              </div>
+
+              <div class="info-item">
+                <div class="info-item__icon" aria-hidden="true">📞</div>
+                <div class="info-item__body">
+                  <dt>Telefon</dt>
+                  <dd><a href="tel:+38512345678">01 234 5678</a></dd>
+                </div>
+              </div>
+
+              <div class="info-item">
+                <div class="info-item__icon" aria-hidden="true">✉️</div>
+                <div class="info-item__body">
+                  <dt>E-mail</dt>
+                  <dd><a href="mailto:info@merkato.hr">info@merkato.hr</a></dd>
+                </div>
+              </div>
+
+              <div class="info-item">
+                <div class="info-item__icon" aria-hidden="true">🏢</div>
+                <div class="info-item__body">
+                  <dt>OIB / Matični broj</dt>
+                  <dd>12345678901 / 87654321</dd>
+                </div>
+              </div>
+            </dl>
+
+            <!-- Hours card -->
+            <div class="hours-card">
+              <div class="hours-card__head">🕐 Radno vrijeme</div>
+              <div class="hours-row" id="row-pon-pet">
+                <span>Ponedjeljak – Petak</span>
+                <span class="hours-time">7:00 – 20:00</span>
+              </div>
+              <div class="hours-row" id="row-sub">
+                <span>Subota</span>
+                <span class="hours-time">8:00 – 16:00</span>
+              </div>
+              <div class="hours-row" id="row-ned">
+                <span>Nedjelja</span>
+                <span class="hours-time">Zatvoreno</span>
+              </div>
+            </div>
+
+            <!-- Map placeholder -->
+            <div class="map-placeholder" aria-label="Karta lokacije">
+              <span>🗺️</span>
+              <strong>Trg slobode 12, Zagreb</strong>
+              <a href="https://maps.google.com/?q=Trg+slobode+12+Zagreb" target="_blank" rel="noopener"
+                 style="color:var(--blue);font-weight:700;font-size:.8rem;margin-top:.2rem;">
+                Otvori u Google Maps →
+              </a>
+            </div>
+
+            <!-- Social media -->
+            <div class="divider-label"><span>Pratite nas</span></div>
+            <div class="social-row">
+              <a href="#" class="social-btn" aria-label="Facebook" title="Facebook">🇫</a>
+              <a href="#" class="social-btn" aria-label="Instagram" title="Instagram">📸</a>
+              <a href="#" class="social-btn" aria-label="WhatsApp" title="WhatsApp">💬</a>
+              <a href="#" class="social-btn" aria-label="Viber" title="Viber">📱</a>
+            </div>
+
+          </div>
+
+          <!-- ── RIGHT: Form ─────────────────────────────── -->
+          <div class="contact-form-wrap">
+            <h2>Pošaljite nam poruku</h2>
+
+            <form id="contactForm" novalidate>
+
+              <!-- Name + Email -->
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="ime">Ime i prezime <span style="color:var(--yellow);font-size:.9em;">*</span></label>
+                  <input type="text" id="ime" name="ime" placeholder="Npr. Ivan Horvat" required autocomplete="name">
+                </div>
+                <div class="form-group">
+                  <label for="email">E-mail adresa <span style="color:var(--yellow);font-size:.9em;">*</span></label>
+                  <input type="email" id="email" name="email" placeholder="vas@email.hr" required autocomplete="email">
+                </div>
+              </div>
+
+              <!-- Phone -->
+              <div class="form-group">
+                <label for="telefon">Broj telefona <span style="color:var(--text-muted);font-weight:400;text-transform:none;letter-spacing:0;">(nije obavezno)</span></label>
+                <input type="tel" id="telefon" name="telefon" placeholder="09x xxx xxxx" autocomplete="tel">
+              </div>
+
+              <!-- Subject chips -->
+              <div class="form-group">
+                <label>Tema upita <span style="color:var(--yellow);font-size:.9em;">*</span></label>
+                <div class="subject-chips" role="group" aria-label="Odaberite temu upita">
+                  <span class="subject-chip">
+                    <input type="radio" name="tema" id="t-opci" value="Opći upit" checked>
+                    <label for="t-opci">Opći upit</label>
+                  </span>
+                  <span class="subject-chip">
+                    <input type="radio" name="tema" id="t-narudzba" value="Narudžba">
+                    <label for="t-narudzba">Narudžba / dostava</label>
+                  </span>
+                  <span class="subject-chip">
+                    <input type="radio" name="tema" id="t-cijene" value="Cijene i akcije">
+                    <label for="t-cijene">Cijene &amp; akcije</label>
+                  </span>
+                  <span class="subject-chip">
+                    <input type="radio" name="tema" id="t-reklamacija" value="Reklamacija">
+                    <label for="t-reklamacija">Reklamacija</label>
+                  </span>
+                  <span class="subject-chip">
+                    <input type="radio" name="tema" id="t-suradnja" value="Poslovna suradnja">
+                    <label for="t-suradnja">Poslovna suradnja</label>
+                  </span>
+                  <span class="subject-chip">
+                    <input type="radio" name="tema" id="t-ostalo" value="Ostalo">
+                    <label for="t-ostalo">Ostalo</label>
+                  </span>
+                </div>
+              </div>
+
+              <!-- Message -->
+              <div class="form-group">
+                <label for="poruka">Poruka <span style="color:var(--yellow);font-size:.9em;">*</span></label>
+                <textarea id="poruka" name="poruka" placeholder="Opišite vaš upit što detaljnije…" required maxlength="1000"></textarea>
+                <p class="char-counter"><span id="charCount">0</span> / 1000 znakova</p>
+              </div>
+
+              <!-- Privacy checkbox -->
+              <div class="form-group" style="display:flex;gap:.75rem;align-items:flex-start;">
+                <input type="checkbox" id="privola" name="privola" required
+                       style="width:18px;height:18px;margin-top:.2rem;accent-color:var(--blue);flex-shrink:0;">
+                <label for="privola" style="text-transform:none;letter-spacing:0;font-size:.85rem;font-weight:400;color:var(--text-sub);line-height:1.55;cursor:pointer;">
+                  Prihvaćam <a href="#" style="color:var(--blue);font-weight:700;">uvjete korištenja</a> i suglasan/na sam s obradom osobnih podataka u svrhu odgovora na upit.
+                  <span style="color:var(--yellow);font-size:.9em;"> *</span>
+                </label>
+              </div>
+
+              <!-- Submit row -->
+              <div class="form-submit-row">
+                <span class="form-note">
+                  🔒 Vaši podaci su sigurni i neće biti dijeljeni s trećim stranama.
+                </span>
+                <button type="submit" class="btn btn-blue" id="submitBtn">
+                  Pošalji poruku →
+                </button>
+              </div>
+
+            </form>
+
+            <!-- FAQ mini section -->
+            <div class="divider-label"><span>Česta pitanja</span></div>
+
+            <details style="margin-bottom:.75rem;border:1.5px solid var(--border);border-radius:var(--radius);overflow:hidden;">
+              <summary style="padding:.9rem 1.1rem;cursor:pointer;font-weight:600;font-size:.9rem;color:var(--text);list-style:none;display:flex;justify-content:space-between;align-items:center;gap:.5rem;background:var(--surface);">
+                Kada mogu očekivati odgovor na upit?
+                <span style="font-size:.8rem;color:var(--text-muted);">▾</span>
+              </summary>
+              <p style="padding:.1rem 1.1rem 1rem;font-size:.88rem;color:var(--text-muted);line-height:1.7;background:var(--bg);">
+                Na sve upite odgovaramo unutar <strong>24 sata</strong> radnim danima. Za hitne stvari slobodno nas nazovite na <a href="tel:+38512345678" style="color:var(--blue);font-weight:700;">01 234 5678</a>.
+              </p>
+            </details>
+
+            <details style="margin-bottom:.75rem;border:1.5px solid var(--border);border-radius:var(--radius);overflow:hidden;">
+              <summary style="padding:.9rem 1.1rem;cursor:pointer;font-weight:600;font-size:.9rem;color:var(--text);list-style:none;display:flex;justify-content:space-between;align-items:center;gap:.5rem;background:var(--surface);">
+                Dostavljate li na kućnu adresu?
+                <span style="font-size:.8rem;color:var(--text-muted);">▾</span>
+              </summary>
+              <p style="padding:.1rem 1.1rem 1rem;font-size:.88rem;color:var(--text-muted);line-height:1.7;background:var(--bg);">
+                Da! Vršimo dostavu u roku 24 sata za naručene količine unutar Zagreba i okolice. Za detalje i narudžbu pošaljite nam poruku ili nazovite.
+              </p>
+            </details>
+
+            <details style="margin-bottom:.75rem;border:1.5px solid var(--border);border-radius:var(--radius);overflow:hidden;">
+              <summary style="padding:.9rem 1.1rem;cursor:pointer;font-weight:600;font-size:.9rem;color:var(--text);list-style:none;display:flex;justify-content:space-between;align-items:center;gap:.5rem;background:var(--surface);">
+                Kako mogu podnijeti reklamaciju?
+                <span style="font-size:.8rem;color:var(--text-muted);">▾</span>
+              </summary>
+              <p style="padding:.1rem 1.1rem 1rem;font-size:.88rem;color:var(--text-muted);line-height:1.7;background:var(--bg);">
+                Odaberite temu <strong>„Reklamacija"</strong> u obrascu iznad i opišite problem. Možete donijeti i račun te proizvod osobno u prodavaonicu — riješit ćemo sve odmah na licu mjesta.
+              </p>
+            </details>
+
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ======= FOOTER ======= -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="container">
+      <div class="footer-grid">
+
+        <div class="footer-brand">
+          <a href="../index.html" class="brand" style="display:inline-flex;margin-bottom:.85rem;">
+            <img src="../images/logo.png" alt="MERKATO logo" class="brand__logo" style="filter:brightness(1.3)">
+            <span class="brand__name">
+              MERKATO
+              <small>Mješovita roba d.o.o.</small>
+            </span>
+          </a>
+          <p>Vaš pouzdani partner za svakodnevnu opskrbu od 2003. godine. Tradicija, kvaliteta i povjerenje.</p>
+        </div>
+
+        <div class="footer-col">
+          <h4>Navigacija</h4>
+          <ul>
+            <li><a href="../index.html">Početna</a></li>
+            <li><a href="cijenik.html">Cijenik</a></li>
+            <li><a href="katalog.html">Katalog</a></li>
+            <li><a href="kontakt.html">Kontakt</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Kontakt</h4>
+          <ul>
+            <li>📍 Trg slobode 12, Zagreb</li>
+            <li>📞 <a href="tel:+38512345678">01 234 5678</a></li>
+            <li>✉ <a href="mailto:info@merkato.hr">info@merkato.hr</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Radno vrijeme</h4>
+          <ul>
+            <li>Pon–Pet: 7:00–20:00</li>
+            <li>Subota: 8:00–16:00</li>
+            <li>Nedjelja: zatvoreno</li>
+          </ul>
+        </div>
+
+      </div>
+
+      <div class="footer-bottom">
+        <span>&copy; 2025 MERKATO d.o.o. Sva prava pridržana.</span>
+        <span>OIB: 12345678901 | Zagreb, Hrvatska</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ======= TOAST ======= -->
+  <div class="toast" id="successToast" role="status" aria-live="polite">
+    <span class="toast__icon">✅</span>
+    <div>
+      <strong style="display:block;margin-bottom:.15rem;">Poruka poslana!</strong>
+      <span style="font-size:.82rem;opacity:.8;">Javit ćemo vam se u roku 24 sata.</span>
+    </div>
+  </div>
+
+  <script>
+    /* ── Hamburger ── */
+    const toggle = document.getElementById('navToggle');
+    const nav    = document.getElementById('mainNav');
+    toggle.addEventListener('click', () => {
+      const open = toggle.getAttribute('aria-expanded') === 'true';
+      toggle.setAttribute('aria-expanded', String(!open));
+      nav.classList.toggle('is-open');
+    });
+    window.addEventListener('resize', () => {
+      if (window.innerWidth >= 768) {
+        toggle.setAttribute('aria-expanded', 'false');
+        nav.classList.remove('is-open');
+      }
+    });
+
+    /* ── Scroll shadow ── */
+    const header = document.getElementById('siteHeader');
+    window.addEventListener('scroll', () => {
+      header.classList.toggle('scrolled', window.scrollY > 40);
+    }, { passive: true });
+
+    /* ── Live open/closed status ── */
+    (function() {
+      const now    = new Date();
+      const day    = now.getDay();   // 0=Sun, 1=Mon … 6=Sat
+      const hour   = now.getHours();
+      const minute = now.getMinutes();
+      const time   = hour + minute / 60;
+
+      const card   = document.getElementById('statusCard');
+      const icon   = document.getElementById('statusIcon');
+      const title  = document.getElementById('statusTitle');
+      const text   = document.getElementById('statusText');
+
+      let isOpen = false;
+      let todayLabel = '';
+
+      if (day >= 1 && day <= 5) {          // Mon–Fri
+        todayLabel = 'Pon–Pet';
+        isOpen = time >= 7 && time < 20;
+        document.getElementById('row-pon-pet').classList.add('today');
+      } else if (day === 6) {              // Sat
+        todayLabel = 'Subota';
+        isOpen = time >= 8 && time < 16;
+        document.getElementById('row-sub').classList.add('today');
+      } else {                             // Sun
+        todayLabel = 'Nedjelja';
+        isOpen = false;
+        document.getElementById('row-ned').classList.add('today');
+      }
+
+      if (isOpen) {
+        icon.textContent = '🟢';
+        title.innerHTML = '<span class="live-dot"></span> Trenutno otvoreno';
+        const closeHour = (day === 6) ? '16:00' : '20:00';
+        text.textContent = todayLabel + ' · Radimo do ' + closeHour + '.';
+      } else {
+        icon.textContent = '🔴';
+        title.innerHTML = '<span class="live-dot closed"></span> Trenutno zatvoreno';
+        if (day === 0) {
+          text.textContent = 'Nedjelja – ne radimo. Otvoreni smo u ponedjeljak od 7:00.';
+        } else if (time >= 20 || (day === 6 && time >= 16)) {
+          text.textContent = 'Već smo zatvorili. Vidimo se sutra!';
+        } else {
+          const openHour = (day === 6) ? '8:00' : '7:00';
+          text.textContent = todayLabel + ' · Otvaramo u ' + openHour + '.';
+        }
+      }
+    })();
+
+    /* ── Character counter ── */
+    const poruka    = document.getElementById('poruka');
+    const charCount = document.getElementById('charCount');
+    poruka.addEventListener('input', () => {
+      charCount.textContent = poruka.value.length;
+    });
+
+    /* ── Form submit ── */
+    const form      = document.getElementById('contactForm');
+    const submitBtn = document.getElementById('submitBtn');
+    const toast     = document.getElementById('successToast');
+
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      // Basic validation
+      const ime     = document.getElementById('ime');
+      const email   = document.getElementById('email');
+      const poruka2 = document.getElementById('poruka');
+      const privola = document.getElementById('privola');
+
+      let valid = true;
+      [ime, email, poruka2].forEach(field => {
+        field.style.borderColor = '';
+        if (!field.value.trim()) {
+          field.style.borderColor = '#E53E3E';
+          valid = false;
+        }
+      });
+
+      if (!privola.checked) {
+        privola.style.outline = '2px solid #E53E3E';
+        valid = false;
+      } else {
+        privola.style.outline = '';
+      }
+
+      if (!valid) {
+        const firstErr = form.querySelector('[style*="border-color"]');
+        if (firstErr) firstErr.focus();
+        return;
+      }
+
+      // Simulate sending
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Slanje…';
+
+      setTimeout(() => {
+        form.reset();
+        charCount.textContent = '0';
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Pošalji poruku →';
+
+        // Show toast
+        toast.classList.add('show');
+        setTimeout(() => toast.classList.remove('show'), 4500);
+      }, 1200);
+    });
+  </script>
+
+</body>
+</html>
